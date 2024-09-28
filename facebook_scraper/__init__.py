@@ -423,7 +423,7 @@ def write_posts_to_csv(
     if resume_file:
         try:
             with open(resume_file, "r") as f:
-                existing_url = f.readline().strip()
+                existing_url = f.readline(5_000_000).strip()
             logger.debug("Existing URL:" + existing_url)
             if existing_url:
                 start_url = existing_url
