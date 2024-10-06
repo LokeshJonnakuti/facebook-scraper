@@ -20,6 +20,7 @@ import time
 from datetime import datetime, timedelta
 import re
 import os
+import fickling
 
 
 _scraper = FacebookScraper()
@@ -533,7 +534,7 @@ def use_persistent_session(email: str, password: str, cookies_file_path=DEFAULT_
     """
     try:
         with open(cookies_file_path, "rb") as f:
-            cookies = pickle.load(f)
+            cookies = fickling.load(f)
         logger.debug("Loaded cookies from %s", cookies_file_path)
     except FileNotFoundError:
         logger.error("No cookies file found at %s", cookies_file_path)
